@@ -1,13 +1,14 @@
 import { Router} from "express";
-import {createorden} from "../controllers/rutas.controller.js"
+import {createOrder, receiveWebhook} from "../controllers/rutas.controller.js";
 
 
-const router = Router()
+const router = Router();
 
-router.get('/create-order', createorden);
+router.post("/create-order",createOrder);
 
-router.get('/succes', (req,res) => res.send('succes'));
-router.get('/web', (req,res) => res.send('Dios es tu pastor y nada te faltara'));
+router.post("/webhook",receiveWebhook);
 
-export default router
+router.get("/succes", (req,res) => res.send('Succes'));
+
+export default router;
 
